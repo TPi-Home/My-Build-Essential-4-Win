@@ -1,4 +1,4 @@
-#temporarily bypass execution policy w/ unsigned script
+# Temporarily bypass execution policy with unsigned script
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
 if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
@@ -21,7 +21,6 @@ function Install-ChocoPackageIfNotInstalled {
 }
 
 Install-ChocoPackageIfNotInstalled "visualstudio2022community"
-
 Install-ChocoPackageIfNotInstalled "docker-desktop"
 
 if (-not (wsl --list --verbose | Select-String "Ubuntu-Preview")) {
@@ -31,28 +30,23 @@ if (-not (wsl --list --verbose | Select-String "Ubuntu-Preview")) {
 }
 
 Install-ChocoPackageIfNotInstalled "vscode"
-
 Install-ChocoPackageIfNotInstalled "signal"
-
 Install-ChocoPackageIfNotInstalled "okular"
-
 Install-ChocoPackageIfNotInstalled "steam"
-
 Install-ChocoPackageIfNotInstalled "epicgameslauncher"
-
 Install-ChocoPackageIfNotInstalled "cmake --installargs 'ADD_CMAKE_TO_PATH=System'"
-
 Install-ChocoPackageIfNotInstalled "xampp"
-
 Install-ChocoPackageIfNotInstalled "localwp"
-
 Install-ChocoPackageIfNotInstalled "git"
-
 Install-ChocoPackageIfNotInstalled "github-desktop"
-
 Install-ChocoPackageIfNotInstalled "freemind"
+Install-ChocoPackageIfNotInstalled "eclipse"
+Install-ChocoPackageIfNotInstalled "androidstudio"
+Install-ChocoPackageIfNotInstalled "virtualbox"
+Install-ChocoPackageIfNotInstalled "neovim"
+Install-ChocoPackageIfNotInstalled "powertoys"
 
 Write-Host "Installation complete. Please restart your computer if necessary."
 
-#re-enable execution policy
+# Re-enable execution policy
 Set-ExecutionPolicy Restricted -Scope Process -Force
