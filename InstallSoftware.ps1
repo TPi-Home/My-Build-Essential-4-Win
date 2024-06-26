@@ -45,6 +45,10 @@ Install-ChocoPackageIfNotInstalled "androidstudio"
 Install-ChocoPackageIfNotInstalled "virtualbox"
 Install-ChocoPackageIfNotInstalled "neovim"
 Install-ChocoPackageIfNotInstalled "powertoys"
+Install-ChocoPackageIfNotInstalled "paint.net"
+Install-ChocoPackageIfNotInstalled "cherrytree"
+Install-ChocoPackageIfNotInstalled "greenshot"
+Install-ChocoPackageIfNotInstalled "ida-free"
 
 Write-Host "Installation complete. Please restart your computer if necessary."
 
