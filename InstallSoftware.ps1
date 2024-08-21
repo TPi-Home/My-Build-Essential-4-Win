@@ -52,7 +52,7 @@ Install-ChocoPackageIfNotInstalled "ida-free"
 Install-ChocoPackageIfNotInstalled "joplin"
 Install-ChocoPackageIfNotInstalled "gimp"
 Install-ChocoPackageIfNotInstalled "krita"
-Install-ChocoPackageIfNotInstalled "blender"
+#Install-ChocoPackageIfNotInstalled "blender"
 Install-ChocoPackageIfNotInstalled "7zip"
 
 Write-Host "Installation complete. Please restart your computer if necessary."
