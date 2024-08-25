@@ -54,6 +54,7 @@ Install-ChocoPackageIfNotInstalled "gimp"
 Install-ChocoPackageIfNotInstalled "krita"
 #Install-ChocoPackageIfNotInstalled "blender"
 Install-ChocoPackageIfNotInstalled "7zip"
+Install-ChocoPackageIfNotInstalled "kdenlive"
 
 Write-Host "Installation complete. Please restart your computer if necessary."
 
