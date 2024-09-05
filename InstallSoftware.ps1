@@ -30,6 +30,7 @@ if (-not (wsl --list --verbose | Select-String "Ubuntu-Preview")) {
 }
 
 Install-ChocoPackageIfNotInstalled "vscode"
+#mingw and add to path
 Install-ChocoPackageIfNotInstalled "signal"
 Install-ChocoPackageIfNotInstalled "okular"
 Install-ChocoPackageIfNotInstalled "steam"
@@ -39,7 +40,7 @@ Install-ChocoPackageIfNotInstalled "cmake --installargs 'ADD_CMAKE_TO_PATH=Syste
 #Install-ChocoPackageIfNotInstalled "localwp"
 Install-ChocoPackageIfNotInstalled "git"
 Install-ChocoPackageIfNotInstalled "github-desktop"
-Install-ChocoPackageIfNotInstalled "freemind"
+#Install-ChocoPackageIfNotInstalled "freemind"
 #Install-ChocoPackageIfNotInstalled "eclipse"
 Install-ChocoPackageIfNotInstalled "androidstudio"
 Install-ChocoPackageIfNotInstalled "virtualbox"
@@ -48,7 +49,7 @@ Install-ChocoPackageIfNotInstalled "powertoys"
 Install-ChocoPackageIfNotInstalled "paint.net"
 #Install-ChocoPackageIfNotInstalled "cherrytree"
 #Install-ChocoPackageIfNotInstalled "greenshot"
-Install-ChocoPackageIfNotInstalled "ida-free"
+#Install-ChocoPackageIfNotInstalled "ida-free"
 Install-ChocoPackageIfNotInstalled "joplin"
 Install-ChocoPackageIfNotInstalled "gimp"
 Install-ChocoPackageIfNotInstalled "krita"
