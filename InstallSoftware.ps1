@@ -36,12 +36,9 @@ Install-ChocoPackageIfNotInstalled "okular"
 Install-ChocoPackageIfNotInstalled "steam"
 Install-ChocoPackageIfNotInstalled "epicgameslauncher"
 Install-ChocoPackageIfNotInstalled "cmake --installargs 'ADD_CMAKE_TO_PATH=System'"
-#Install-ChocoPackageIfNotInstalled "xampp"
-#Install-ChocoPackageIfNotInstalled "localwp"
 Install-ChocoPackageIfNotInstalled "git"
 Install-ChocoPackageIfNotInstalled "github-desktop"
-#Install-ChocoPackageIfNotInstalled "freemind"
-#Install-ChocoPackageIfNotInstalled "eclipse"
+#jb toolbox
 Install-ChocoPackageIfNotInstalled "androidstudio"
 Install-ChocoPackageIfNotInstalled "virtualbox"
 Install-ChocoPackageIfNotInstalled "neovim"
@@ -49,15 +46,13 @@ Install-ChocoPackageIfNotInstalled "powertoys"
 Install-ChocoPackageIfNotInstalled "paint.net"
 #Install-ChocoPackageIfNotInstalled "cherrytree"
 #Install-ChocoPackageIfNotInstalled "greenshot"
-#Install-ChocoPackageIfNotInstalled "ida-free"
 Install-ChocoPackageIfNotInstalled "joplin"
 Install-ChocoPackageIfNotInstalled "gimp"
 Install-ChocoPackageIfNotInstalled "krita"
-#Install-ChocoPackageIfNotInstalled "blender"
+#Install-ChocoPackageIfNotInstalled "blender" deprecated 
 Install-ChocoPackageIfNotInstalled "7zip"
-#Install-ChocoPackageIfNotInstalled "kdenlive"
 Install-ChocoPackageIfNotInstalled "windirstat"
-
+#java:
 
 Write-Host "Installation complete. Please restart your computer if necessary."
 
