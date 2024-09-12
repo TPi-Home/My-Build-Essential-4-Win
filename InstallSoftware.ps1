@@ -20,15 +20,13 @@ function Install-ChocoPackageIfNotInstalled {
     }
 }
 
-Install-ChocoPackageIfNotInstalled "visualstudio2022community"
-Install-ChocoPackageIfNotInstalled "docker-desktop"
-
 if (-not (wsl --list --verbose | Select-String "Ubuntu-Preview")) {
     wsl --install -d Ubuntu-Preview
 } else {
     Write-Host "Ubuntu Preview is already installed."
 }
-
+Install-ChocoPackageIfNotInstalled "visualstudio2022community"
+Install-ChocoPackageIfNotInstalled "docker-desktop"
 Install-ChocoPackageIfNotInstalled "vscode"
 #mingw and add to path
 Install-ChocoPackageIfNotInstalled "signal"
@@ -53,7 +51,7 @@ Install-ChocoPackageIfNotInstalled "krita"
 Install-ChocoPackageIfNotInstalled "7zip"
 Install-ChocoPackageIfNotInstalled "windirstat"
 #java:
-
+#conda
 Write-Host "Installation complete. Please restart your computer if necessary."
 
 # Re-enable execution policy
