@@ -99,6 +99,7 @@ Install-ChocoPackageIfNotInstalled "joplin"
 #zlib -> OpenTTD
 
 Write-Host "Installation complete. Please run VCPKG setup script and restart your computer."
-
+Write-Host "Other software not included here: OneNote, Massgrave AS, Aseprite, Godot, Unreal."
+Write-Host "Other dependencies not included here: Skia for Aseprite, Ninja Build, SDL2, Zlib."
 # Re-enable execution policy
 Set-ExecutionPolicy Restricted -Scope Process -Force
