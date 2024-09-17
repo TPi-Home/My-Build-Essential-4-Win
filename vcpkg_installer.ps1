@@ -1,5 +1,5 @@
 # PowerShell Script to Clone, Bootstrap vcpkg, Set Environment Variables, and Update PATH
-
+Set-ExecutionPolicy Bypass -Scope Process -Force
 # Function to display messages in different colors
 function Write-Color {
     param (
@@ -135,17 +135,17 @@ function Bootstrap-Vcpkg {
 function Set-EnvironmentVariables {
     $vcpkgPath = (Resolve-Path "vcpkg").Path
 
-    # Set the vcpkg_root environment variable for the current user
-    Write-Color "Setting 'vcpkg_root' environment variable to '$vcpkgPath'..." -Color Green
-    [System.Environment]::SetEnvironmentVariable("vcpkg_root", $vcpkgPath, [System.EnvironmentVariableTarget]::User)
+    # Set the VCPKG_ROOT environment variable for the current user
+    Write-Color "Setting 'VCPKG_ROOT' environment variable to '$vcpkgPath'..." -Color Green
+    [System.Environment]::SetEnvironmentVariable("VCPKG_ROOT", $vcpkgPath, [System.EnvironmentVariableTarget]::User)
 
-    # Verify if vcpkg_root has been set correctly
+    # Verify if VCPKG_ROOT has been set correctly
     $existingVcpkgRoot = [System.Environment]::GetEnvironmentVariable("VCPKG_ROOT", [System.EnvironmentVariableTarget]::User)
     if ($existingVcpkgRoot -eq $vcpkgPath) {
-        Write-Color "'vcpkg_root' has been set successfully." -Color Green
+        Write-Color "'VCPKG_ROOT' has been set successfully." -Color Green
     }
     else {
-        Write-Color "Failed to set 'vcpkg_root'." -Color Red
+        Write-Color "Failed to set 'VCPKG_ROOT'." -Color Red
     }
 
     # Add vcpkg to the user's PATH
@@ -161,7 +161,7 @@ function Set-EnvironmentVariables {
     }
 
     # Confirm the changes
-    Write-Color "`nEnvironment Variable 'vcpkg_root': $($env:vcpkg_root)" -Color Cyan
+    Write-Color "`nEnvironment Variable 'VCPKG_ROOT': $($env:VCPKG_ROOT)" -Color Cyan
     Write-Color "Current User PATH:" -Color Cyan
     Write-Color $([Environment]::GetEnvironmentVariable("PATH", "User")) -Color White
 
@@ -170,3 +170,4 @@ function Set-EnvironmentVariables {
 
 # Start the script by confirming the installation directory
 Confirm-InstallationDirectory
+Set-ExecutionPolicy Restricted -Scope Process -Force
