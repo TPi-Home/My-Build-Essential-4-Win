@@ -50,6 +50,7 @@ Install-ChocoPackageIfNotInstalled "git"
 Install-ChocoPackageIfNotInstalled "cmake --installargs 'ADD_CMAKE_TO_PATH=System'"
 Install-ChocoPackageIfNotInstalled "cygwin"
 #cywgin -> devel + mintty -> "C:\cygwin64\bin" to path
+#msys2
 
 #Messaging:
 Write-Host "Installing messaging software."
