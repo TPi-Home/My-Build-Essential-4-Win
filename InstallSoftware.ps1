@@ -70,6 +70,9 @@ Install-ChocoPackageIfNotInstalled "virtualbox"
 Write-Host "Installing python and tools."
 Install-ChocoPackageIfNotInstalled "miniconda3"
 
+#Python3
+#Python3-aider
+
 #Misc:
 Write-Host "Installing miscellaneous Windows software."
 Install-ChocoPackageIfNotInstalled "okular"
