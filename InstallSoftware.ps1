@@ -52,6 +52,9 @@ Install-ChocoPackageIfNotInstalled "cygwin"
 #cywgin -> devel + mintty -> "C:\cygwin64\bin" to path
 #msys2
 
+#LLM:
+#Ollama
+
 #Messaging:
 Write-Host "Installing messaging software."
 Install-ChocoPackageIfNotInstalled "signal"
