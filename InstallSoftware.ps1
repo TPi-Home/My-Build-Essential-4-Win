@@ -75,11 +75,6 @@ Install-ChocoPackageIfNotInstalled "git"
 Install-ChocoPackageIfNotInstalled -packageName "cmake" -installArgs "ADD_CMAKE_TO_PATH=System"
 Install-ChocoPackageIfNotInstalled "msys2"
 
-#LLM:
-Write-Host "Installing LLM software."
-Install-ChocoPackageIfNotInstalled "ollama"
-python -m pip install -U aider-chat
-
 #Messaging:
 Write-Host "Installing messaging software."
 Install-ChocoPackageIfNotInstalled "signal"
@@ -102,6 +97,12 @@ Install-ChocoPackageIfNotInstalled "miniconda3"
 #Python3
 #Python3-aider: added to LLM
 Install-ChocoPackageIfNotInstalled -packageName "python" -version "3.12.0"
+
+#Always run after Python3 setup
+#LLM:
+Write-Host "Installing LLM software."
+Install-ChocoPackageIfNotInstalled "ollama"
+python -m pip install -U aider-chat
 
 #Misc:
 Write-Host "Installing miscellaneous Windows software."
@@ -145,7 +146,7 @@ if ($response -eq "y" -or $response -eq "yes") {
     & "$env:USERPROFILE\Documents\vcpkg_installer.ps1"
     Write-Host "script2.ps1 has been executed."
 } else {
-    Write-Host "Skipping vcpkg"
+    Write-Host "Skipping vcpkg."
 }
 
 # Re-enable execution policy
