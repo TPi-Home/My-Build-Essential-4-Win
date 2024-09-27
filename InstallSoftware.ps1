@@ -11,17 +11,42 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 choco upgrade chocolatey -y
 
 #Function to call Chocolatey and install a package if it's not already installed.
+#function Install-ChocoPackageIfNotInstalled {
+    #param (
+        #[string]$packageName
+    #)
+
+    #if (-not (choco list --local-only | Select-String $packageName)) {
+        #choco install $packageName -y
+    #} else {
+        #Write-Host "$packageName is already installed."
+    #}
+#}
 function Install-ChocoPackageIfNotInstalled {
     param (
-        [string]$packageName
+        [string]$packageName,
+        [string]$version = $null,     # Optional version argument
+        [string]$installArgs = $null  # Optional install arguments
     )
 
+    # Check if the package is installed
     if (-not (choco list --local-only | Select-String $packageName)) {
-        choco install $packageName -y
+        $command = "choco install $packageName -y"
+        
+        if ($version) {
+            $command += " --version=$version"
+        }
+        
+        if ($installArgs) {
+            $command += " --installargs='$installArgs'"
+        }
+
+        Invoke-Expression $command
     } else {
         Write-Host "$packageName is already installed."
     }
 }
+
 #WSL-Ubuntu:
 Write-Host "Installing Ubuntu Preview WSL if not installed."
 if (-not (wsl --list --verbose | Select-String "Ubuntu-Preview")) {
@@ -34,7 +59,6 @@ Write-Host "Installing IDEs and related software."
 Install-ChocoPackageIfNotInstalled "visualstudio2022community"
 
 #JB/IDE:
-#Install-ChocoPackageIfNotInstalled "androidstudio"
 Install-ChocoPackageIfNotInstalled "jetbrainstoolbox"
 
 #Text Editor:
@@ -47,13 +71,14 @@ Write-Host "Installing common software development tools."
 Install-ChocoPackageIfNotInstalled "docker-desktop"
 Install-ChocoPackageIfNotInstalled "github-desktop"
 Install-ChocoPackageIfNotInstalled "git"
-Install-ChocoPackageIfNotInstalled "cmake --installargs 'ADD_CMAKE_TO_PATH=System'"
-Install-ChocoPackageIfNotInstalled "cygwin"
-#cywgin -> devel + mintty -> "C:\cygwin64\bin" to path
-#msys2
+#Install-ChocoPackageIfNotInstalled "cmake --installargs 'ADD_CMAKE_TO_PATH=System'"
+Install-ChocoPackageIfNotInstalled -packageName "cmake" -installArgs "ADD_CMAKE_TO_PATH=System"
+Install-ChocoPackageIfNotInstalled "msys2"
 
 #LLM:
-#Ollama
+Write-Host "Installing LLM software."
+Install-ChocoPackageIfNotInstalled "ollama"
+python -m pip install -U aider-chat
 
 #Messaging:
 Write-Host "Installing messaging software."
@@ -63,6 +88,7 @@ Install-ChocoPackageIfNotInstalled "signal"
 Write-Host "Installing game launchers"
 Install-ChocoPackageIfNotInstalled "steam"
 Install-ChocoPackageIfNotInstalled "epicgameslauncher"
+Install-ChocoPackageIfNotInstalled "goggalaxy"
 
 #Emulation/VM:
 Write-Host "Installing VM software"
@@ -74,7 +100,8 @@ Write-Host "Installing python and tools."
 Install-ChocoPackageIfNotInstalled "miniconda3"
 
 #Python3
-#Python3-aider
+#Python3-aider: added to LLM
+Install-ChocoPackageIfNotInstalled -packageName "python" -version "3.12.0"
 
 #Misc:
 Write-Host "Installing miscellaneous Windows software."
@@ -105,8 +132,21 @@ Install-ChocoPackageIfNotInstalled "joplin"
 #SDL2
 #zlib -> OpenTTD
 
-Write-Host "Installation complete. Please run VCPKG setup script and restart your computer."
 Write-Host "Other software not included here: OneNote, Massgrave AS, Aseprite, Godot, Unreal."
 Write-Host "Other dependencies not included here: Skia for Aseprite, Ninja Build, SDL2, Zlib."
+
+# Prompt the user to see if they want to run the second script
+$response = Read-Host "Do you want to install vcpkg to My Documents? (yes/no)"
+
+# Check the user's response
+if ($response -eq "y" -or $response -eq "yes") {
+    # Run the second script
+    Copy-Item -Path .\vcpkg_installer.ps1 -Destination "$env:USERPROFILE\Documents"
+    & "$env:USERPROFILE\Documents\vcpkg_installer.ps1"
+    Write-Host "script2.ps1 has been executed."
+} else {
+    Write-Host "Skipping vcpkg"
+}
+
 # Re-enable execution policy
 Set-ExecutionPolicy Restricted -Scope Process -Force
