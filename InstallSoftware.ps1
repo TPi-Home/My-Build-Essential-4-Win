@@ -1,6 +1,19 @@
 # Temporarily bypass execution policy with unsigned script
 Set-ExecutionPolicy Bypass -Scope Process -Force
 
+#Manual Install:
+    #Blender
+    #ZeroTier
+    #Python3-aider
+    #cywgin -> devel + mintty -> "C:\cygwin64\bin" to path
+    #msys2
+    #git-lfs
+    #May not be a bad idea to parse this list for software that chocolatey doesn't keep updated well.
+    
+    #Lib:
+    #SDL2
+    #zlib -> OpenTTD
+
 #Chocolatey:
 Write-Host "Installing Chocolatey if not installed."
 if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
@@ -34,7 +47,6 @@ Write-Host "Installing IDEs and related software."
 Install-ChocoPackageIfNotInstalled "visualstudio2022community"
 
 #JB/IDE:
-#Install-ChocoPackageIfNotInstalled "androidstudio"
 Install-ChocoPackageIfNotInstalled "jetbrainstoolbox"
 
 #Text Editor:
@@ -47,14 +59,13 @@ Write-Host "Installing common software development tools."
 Install-ChocoPackageIfNotInstalled "docker-desktop"
 Install-ChocoPackageIfNotInstalled "github-desktop"
 Install-ChocoPackageIfNotInstalled "git"
-#git-lfs
 Install-ChocoPackageIfNotInstalled "cmake --installargs 'ADD_CMAKE_TO_PATH=System'"
 Install-ChocoPackageIfNotInstalled "cygwin"
-#cywgin -> devel + mintty -> "C:\cygwin64\bin" to path
-#msys2
+
 
 #LLM:
-#Ollama
+Install-ChocoPackageIfNotInstalled "ollama"
+
 
 #Messaging:
 Write-Host "Installing messaging software."
@@ -75,7 +86,6 @@ Write-Host "Installing python and tools."
 Install-ChocoPackageIfNotInstalled "miniconda3"
 
 #Python3
-#Python3-aider
 
 #Misc:
 Write-Host "Installing miscellaneous Windows software."
@@ -91,7 +101,7 @@ Install-ChocoPackageIfNotInstalled "paint.net"
 #Install-ChocoPackageIfNotInstalled "greenshot"
 Install-ChocoPackageIfNotInstalled "gimp"
 Install-ChocoPackageIfNotInstalled "krita"
-Install-ChocoPackageIfNotInstalled "blender" 
+#Install-ChocoPackageIfNotInstalled "blender" 
 
 #Productivity:
 Write-Host "Installing productivity tools."
@@ -101,10 +111,6 @@ Install-ChocoPackageIfNotInstalled "joplin"
 #java:
 #Install-ChocoPackageIfNotInstalled "openjdk"
 #Install-ChocoPackageIfNotInstalled "javaruntime"
-
-#Lib:
-#SDL2
-#zlib -> OpenTTD
 
 Write-Host "Installation complete. Please run VCPKG setup script and restart your computer."
 Write-Host "Other software not included here: OneNote, Massgrave AS, Aseprite, Godot, Unreal."
